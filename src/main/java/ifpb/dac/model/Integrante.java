@@ -11,13 +11,13 @@ public class Integrante {
 
     private int id;
     private String nome;
-//    private String cpf;
+    //private String cpf;
     private CPF cpf = new CPF("");
-
+    private Endereco endereco = new Endereco();
+    
+    
     public Integrante() {
     }
-
-     
 
     public int getId() {
         return id;
@@ -43,6 +43,16 @@ public class Integrante {
         this.cpf = cpf;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    
+
 //    public String getCpf() {
 //        return cpf;
 //    }
@@ -54,9 +64,10 @@ public class Integrante {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 23 * hash + this.id;
-        hash = 23 * hash + Objects.hashCode(this.nome);
-        hash = 23 * hash + Objects.hashCode(this.cpf);
+        hash = 83 * hash + this.id;
+        hash = 83 * hash + Objects.hashCode(this.nome);
+        hash = 83 * hash + Objects.hashCode(this.cpf);
+        hash = 83 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -81,13 +92,18 @@ public class Integrante {
         if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Integrante{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + '}';
+        return "Integrante{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + '}';
     }
+
+    
     
     
 }

@@ -33,3 +33,4 @@ public class CPFConvert implements Converter {
     }
 
 }
+//CDI.current().select(Banco.class).get();

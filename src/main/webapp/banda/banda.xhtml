@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="centro">
+            <h:outputText value="Bem vindo, #{controladorDeLogin.usuario}" />
+            <h:form>
+                <h:outputLabel for="descricao" value="Descrição: "/>
+                <h:inputText  id="descricao" value="#{controladorDeBanda.banda.nomeFantasia}" />
+
+                <h:selectOneMenu id="integrantes" 
+                                 value="#{controladorDeBanda.integrante}" 
+                                 converter="convert.Integrante">
+
+                    <f:selectItems value="#{controladorDeBanda.integrantes()}"
+                                   var="integrante"
+                                   itemLabel="#{integrante.nome}"
+                                   itemValue="#{integrante}" />
+                </h:selectOneMenu>
+                <h:commandButton value="adicionar" action="#{controladorDeBanda.add()}" />
+                
+                <h:dataTable value="#{controladorDeBanda.integrantesDaBanda()}" var="integrante">
+                    <h:column>
+                        <f:facet name="header">Nome</f:facet>
+                            #{integrante.nome}
+                    </h:column> 
+                    <h:column >
+                        <f:facet name="header">CPF</f:facet>
+                        <h:outputText converter="converter.CpfConverter" value="#{integrante.cpf}" />
+                    </h:column>
+                </h:dataTable>
+                
+                <h:commandButton value="salvar" action="#{controladorDeBanda.salvar()}" />
+           
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

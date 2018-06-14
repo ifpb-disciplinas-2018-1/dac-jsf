@@ -25,6 +25,7 @@ public class CPF {
     }
 
     public boolean isValid() {
-        return true; // se tem 11 caracteres
+        return this.numero.length() == 11;
+//        return true; // se tem 11 caracteres
     }
 }

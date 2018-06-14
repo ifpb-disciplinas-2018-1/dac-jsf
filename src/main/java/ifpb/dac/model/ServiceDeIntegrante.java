@@ -1,9 +1,11 @@
 package ifpb.dac.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Predicate;
 
 /**
  * @author Ricardo Job
@@ -41,10 +43,38 @@ public class ServiceDeIntegrante {
 //                lista.set(i, integrante);
 //            }
 //        }
-        
 //        remover(integrante);
-
-        lista.removeIf(i->i.getId()==integrante.getId());
+        lista.removeIf(i -> i.getId() == integrante.getId());
         lista.add(integrante);
+    }
+
+    public List<Endereco> todosOsEnderecos() {
+        return Arrays.asList(
+                new Endereco("Minha rua", "Meu bairro", "Minha cidade"),
+                new Endereco("Tua rua", "Teu bairro", "Tua cidade"),
+                new Endereco("Nossa rua", "Nosso bairro", "Nossa cidade")
+        );
+    }
+
+    public Endereco localizarEnderecoComRua(String rua) {
+
+//        for (Endereco end : todosOsEnderecos()) {
+//            if (end.getRua().equalsIgnoreCase(rua)) {
+//                return end;
+//            }
+//        }
+//        return new Endereco();
+        return todosOsEnderecos()
+                .stream()
+                //                .filter(new Predicate<Endereco>() {
+                //                    @Override
+                //                    public boolean test(Endereco t) {
+                //                        return t.getRua().equalsIgnoreCase(rua);
+                //                    }
+                //                })
+                //                .filter((Endereco end) -> end.getRua().equalsIgnoreCase(rua))
+                .filter(end -> end.getRua().equalsIgnoreCase(rua))
+                .findFirst()
+                .orElse(new Endereco());
     }
 }

@@ -1,32 +1,56 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cadastro de Integrantes</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     </h:head>
     <h:body>
         <h:form>
             <h:inputText value="#{controladorDeIntegrante.integrante.id}" disabled="true"/>
             <h:inputText value="#{controladorDeIntegrante.integrante.nome}"/>
-            
-            
+
+
             <h:inputText value="#{controladorDeIntegrante.integrante.cpf}" 
-                         converter="convert.CPF"/>
-           
+                         converter="convert.CPF"
+                         validator="validator.CPF"/>
+
+
+            <div class="form-group">
+                <h:selectOneMenu value="#{controladorDeIntegrante.integrante.endereco}" 
+                                 converter="convert.Endereco"
+                                 class="form-control">
+                    <f:selectItems value="#{controladorDeIntegrante.listarTodosOsEnderecos()}"
+                                   var="endereco"
+                                   itemLabel="#{endereco.rua}"/>
+                </h:selectOneMenu>
+            </div> 
+            
+             
+
+
             <h:commandButton value="salvar" action="#{controladorDeIntegrante.salvar()}"
                              rendered="#{not controladorDeIntegrante.editando}"/>
             <h:commandButton value="atualizar" action="#{controladorDeIntegrante.atualizar()}"
                              rendered="#{controladorDeIntegrante.editando}"
                              immediate="false"/>
+
+
         </h:form>
 
 
         <h:form>
-            <h:dataTable value="#{controladorDeIntegrante.listarTodosOsIntegrantes()}" var="integrante">
+            <h:dataTable value="#{controladorDeIntegrante.listarTodosOsIntegrantes()}" 
+                         var="integrante">
                 <h:column>#{integrante.id}</h:column>
                 <h:column>#{integrante.nome}</h:column>
                 <h:column>#{integrante.cpf.formatado()}</h:column>
+                <h:column>#{integrante.endereco.bairro}</h:column>
                 <h:column>
                     <h:commandButton value="x" action="#{controladorDeIntegrante.excluir(integrante)}"/>
                 </h:column>
@@ -36,5 +60,8 @@
             </h:dataTable>
         </h:form>
     </h:body>
+
+
+
 </html>
 

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="centro">
+            <h:outputText value="Bem vindo, #{controladorDeLogin.usuario}" />
+            <h:form>
+                <h:dataTable value="#{controladorDeBanda.bandas()}" var="album" border="3">
+                    <h:column>
+                        <f:facet name="header">Descrição</f:facet>
+                            #{album.nomeFantasia}
+                    </h:column>
+                    <h:column >
+                        <f:facet name="header"># integrantes</f:facet>
+                        <h:outputText  value="#{album.integrantes.size()}" />
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </ui:define>
+        <ui:define name="rodape">
+            <p>Listagem de bandas </p>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
+

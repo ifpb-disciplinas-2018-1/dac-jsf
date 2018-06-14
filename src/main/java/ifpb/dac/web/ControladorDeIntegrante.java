@@ -1,10 +1,10 @@
 package ifpb.dac.web;
 
+import ifpb.dac.model.Endereco;
 import ifpb.dac.model.Integrante;
 import ifpb.dac.model.ServiceDeIntegrante;
 import java.io.Serializable;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -25,7 +25,7 @@ public class ControladorDeIntegrante implements Serializable {
     public String salvar() {
         this.service.adicionar(integrante);
         this.integrante = new Integrante();
-        listar();
+//        listar();
         return null;
     }
 
@@ -71,7 +71,11 @@ public class ControladorDeIntegrante implements Serializable {
     }
 
     private void listar() {
-        listarTodosOsIntegrantes().forEach(i->System.out.println(i.getNome()));
+        listarTodosOsIntegrantes()
+                .forEach(i->System.out.println(i.getNome()));
+    }
+    public List<Endereco> listarTodosOsEnderecos(){
+        return this.service.todosOsEnderecos();
     }
 
 }
