@@ -6,13 +6,15 @@
         <title>Primeira página</title>
     </h:head>
     <h:body>
-        Hello :)
-
-        <h:form>
-            <h:inputText value="#{controladorDeCliente.nome}"/>
-            <h:commandButton value="ir" action="#{controladorDeCliente.salvar()}"/>
-        </h:form>
-        
+        <h:outputText value="Oi, #{controladorDeCliente.nome}" />
     </h:body>
 </html>
+
+
+<!--<h:column >
+    <f:facet name="header">Data de Lançamento</f:facet>
+    {album.dataDeLancamento}
+    <h:outputText converter="convert.LocalDate" 
+    value="{album.dataDeLancamento}" />
+</h:column>-->
 

@@ -1,0 +1,25 @@
+.estilo {
+    border: 2px solid;
+    color: blue;
+    border-radius: 15px;
+    padding: 100px;
+}
+
+.campo {
+    padding: 0px;
+    color: blue;
+}
+
+#rodape{
+    background-color: #009999;
+    border: 2px solid;
+    border-radius: 15px;
+    padding: 100px;
+}
+#central {
+    width: 120px;
+    margin: 0 auto;
+}
+
+
+

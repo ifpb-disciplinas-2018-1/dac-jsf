@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Cadastro de Integrantes</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:inputText value="#{controladorDeIntegrante.integrante.id}" disabled="true"/>
+            <h:inputText value="#{controladorDeIntegrante.integrante.nome}"/>
+            
+            
+            <h:inputText value="#{controladorDeIntegrante.integrante.cpf}" 
+                         converter="convert.CPF"/>
+           
+            <h:commandButton value="salvar" action="#{controladorDeIntegrante.salvar()}"
+                             rendered="#{not controladorDeIntegrante.editando}"/>
+            <h:commandButton value="atualizar" action="#{controladorDeIntegrante.atualizar()}"
+                             rendered="#{controladorDeIntegrante.editando}"
+                             immediate="false"/>
+        </h:form>
+
+
+        <h:form>
+            <h:dataTable value="#{controladorDeIntegrante.listarTodosOsIntegrantes()}" var="integrante">
+                <h:column>#{integrante.id}</h:column>
+                <h:column>#{integrante.nome}</h:column>
+                <h:column>#{integrante.cpf.formatado()}</h:column>
+                <h:column>
+                    <h:commandButton value="x" action="#{controladorDeIntegrante.excluir(integrante)}"/>
+                </h:column>
+                <h:column>
+                    <h:commandButton value="editar" action="#{controladorDeIntegrante.editar(integrante)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

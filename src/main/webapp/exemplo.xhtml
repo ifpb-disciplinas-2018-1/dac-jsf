@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <head jsf:id="head">
+        <title>Exemplo com HTML 5</title>
+        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <!--<link jsf:name="estilos.css"  rel="stylesheet" type="text/css" />-->
+    </head>
+    <body jsf:id="body">
+        <nav>
+            <span class="estilo" > 
+                navegação....
+            </span>
+        </nav>
+        <div id="central">
+            <form jsf:id="form" jsf:prependId="false">
+                <input type="text" class="campo" jsf:value="#{controladorDeIntegrante.integrante.nome}"  placeholder="Digite o nome" />
+                <input type="text" class="campo" 
+                       jsf:value="#{controladorDeIntegrante.integrante.cpf}"
+                       jsf:converter="convert.CPF"
+                       placeholder="Digite o cpf" />
+                <button jsf:action="#{controladorDeIntegrante.salvar()}">salvar</button>
+            </form>
+            
+        </div>
+        <footer>
+            <div id="rodape">IFPB</div>
+        </footer>
+    </body>
+</html>
