@@ -1,5 +1,6 @@
 package ifpb.dac.model;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -14,8 +15,9 @@ public class Integrante {
     //private String cpf;
     private CPF cpf = new CPF("");
     private Endereco endereco = new Endereco();
-    
-    
+
+    private LocalDate dataDeNascimento = LocalDate.now();
+
     public Integrante() {
     }
 
@@ -50,8 +52,6 @@ public class Integrante {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
-    
 
 //    public String getCpf() {
 //        return cpf;
@@ -60,7 +60,6 @@ public class Integrante {
 //    public void setCpf(String cpf) {
 //        this.cpf = cpf;
 //    }
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -103,7 +102,4 @@ public class Integrante {
         return "Integrante{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + '}';
     }
 
-    
-    
-    
 }
