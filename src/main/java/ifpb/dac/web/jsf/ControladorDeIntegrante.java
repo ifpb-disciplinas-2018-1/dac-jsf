@@ -1,8 +1,8 @@
-package ifpb.dac.web;
+package ifpb.dac.web.jsf;
 
-import ifpb.dac.model.Endereco;
-import ifpb.dac.model.Integrante;
-import ifpb.dac.model.ServiceDeIntegrante;
+import ifpb.dac.model.domain.Endereco;
+import ifpb.dac.model.domain.Integrante;
+import ifpb.dac.model.service.ServiceDeIntegrante;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;

@@ -1,4 +1,4 @@
-package ifpb.dac.model;
+package ifpb.dac.model.domain;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -22,6 +22,19 @@ public class Integrante {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
+    }
+
+    public Integrante(int id, String nome, String cpf, Endereco endereco, LocalDate dataDeNascimento) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = new CPF(cpf);
+        this.endereco = endereco;
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public Integrante(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
     }
 
     public Integrante() {
@@ -57,6 +70,14 @@ public class Integrante {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public LocalDate getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
     }
 
 //    public String getCpf() {

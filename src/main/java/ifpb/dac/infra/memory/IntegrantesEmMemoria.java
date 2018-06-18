@@ -1,5 +1,8 @@
-package ifpb.dac.model;
+package ifpb.dac.infra.memory;
 
+import ifpb.dac.model.Integrantes;
+import ifpb.dac.model.domain.Endereco;
+import ifpb.dac.model.domain.Integrante;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -11,24 +14,28 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @mail ricardo.job@ifpb.edu.br
  * @since 11/06/2018, 07:29:39
  */
-public class IntegrantesEmMemoria {
+public class IntegrantesEmMemoria implements Integrantes {
 
     private static List<Integrante> lista = new ArrayList<>();
     private static AtomicInteger count = new AtomicInteger(1);
 
+    @Override
     public void adicionar(Integrante integrante) {
         integrante.setId(count.getAndIncrement());
         lista.add(integrante);
     }
 
+    @Override
     public List<Integrante> todos() {
         return Collections.unmodifiableList(lista);
     }
 
+    @Override
     public void remover(Integrante integrante) {
         lista.remove(integrante);
     }
 
+    @Override
     public void atualizar(Integrante integrante) {
 //        for (Integrante integranteLista : lista) {
 //            if(integrante.getId()==integranteLista.getId()){
@@ -47,6 +54,7 @@ public class IntegrantesEmMemoria {
         lista.add(integrante);
     }
 
+    @Override
     public List<Endereco> todosOsEnderecos() {
         return Arrays.asList(
                 new Endereco("Minha rua", "Meu bairro", "Minha cidade"),
@@ -55,6 +63,7 @@ public class IntegrantesEmMemoria {
         );
     }
 
+    @Override
     public Endereco localizarEnderecoComRua(String rua) {
 
 //        for (Endereco end : todosOsEnderecos()) {

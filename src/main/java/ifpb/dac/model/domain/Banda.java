@@ -1,4 +1,4 @@
-package ifpb.dac.model;
+package ifpb.dac.model.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,17 @@ import java.util.Objects;
 public class Banda {
 
     private int id;
+    private String localDeOrigem;
     private String nomeFantasia;
     private List<Integrante> integrantes = new ArrayList<>();
 
-    public Banda(int id, String nomeFantasia) {
-        this.id = id;
-        this.nomeFantasia = nomeFantasia;
+    public Banda() {
     }
 
-    public Banda() {
+    public Banda(int id, String localDeOrigem, String nomeFantasia) {
+        this.id = id;
+        this.localDeOrigem = localDeOrigem;
+        this.nomeFantasia = nomeFantasia;
     }
 
     public void novoIntegrante(Integrante integrante) {

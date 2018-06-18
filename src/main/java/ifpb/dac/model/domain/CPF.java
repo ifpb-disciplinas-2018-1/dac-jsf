@@ -1,4 +1,4 @@
-package ifpb.dac.model;
+package ifpb.dac.model.domain;
 
 /**
  * @author Ricardo Job

@@ -1,6 +1,6 @@
-package ifpb.dac.web;
+package ifpb.dac.web.jsf;
 
-import ifpb.dac.model.ServiceDeCliente;
+import ifpb.dac.model.service.ServiceDeCliente;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
