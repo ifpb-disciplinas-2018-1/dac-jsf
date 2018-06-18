@@ -19,11 +19,11 @@
 
                 <h:selectOneMenu value="#{controladorDeIntegrante.integrante.endereco}" 
                                  converter="convert.Endereco"
-                                 class="blue-text">
+                                 class="blue">
                     <f:selectItems value="#{controladorDeIntegrante.listarTodosOsEnderecos()}"
                                    var="endereco"
                                    itemLabel="#{endereco.rua}"
-                                   class="blue-grey-text"/>
+                                   class="blue-grey"/>
                 </h:selectOneMenu>
 
 
@@ -41,16 +41,19 @@
 
             <h:form>
                 <h:dataTable value="#{controladorDeIntegrante.listarTodosOsIntegrantes()}" 
-                             var="integrante">
+                             var="integrante"
+                             class="striped highlight">
                     <h:column>#{integrante.id}</h:column>
                     <h:column>#{integrante.nome}</h:column>
                     <h:column>#{integrante.cpf.formatado()}</h:column>
                     <h:column>#{integrante.endereco.bairro}</h:column>
                     <h:column>
-                        <h:commandButton value="x" action="#{controladorDeIntegrante.excluir(integrante)}"/>
+                        <h:commandButton value="x" action="#{controladorDeIntegrante.excluir(integrante)}" 
+                                         class="btn-floating"> 
+                        </h:commandButton>
                     </h:column>
                     <h:column>
-                        <h:commandButton value="editar" action="#{controladorDeIntegrante.editar(integrante)}"/>
+                        <h:commandButton value="editar" action="#{controladorDeIntegrante.editar(integrante)}" class="btn"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

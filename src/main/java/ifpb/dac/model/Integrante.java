@@ -18,6 +18,12 @@ public class Integrante {
 
     private LocalDate dataDeNascimento = LocalDate.now();
 
+    public Integrante(int id, String nome, CPF cpf) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+    }
+
     public Integrante() {
     }
 
